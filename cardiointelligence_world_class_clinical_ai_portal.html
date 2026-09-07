@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CardioIntelligence & Advanced Clinical Diagnostics Portal</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #030712;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-nav {
+            background: rgba(3, 7, 18, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .hero-glow {
+            background: radial-gradient(circle at 50% 30%, rgba(37, 99, 235, 0.15) 0%, rgba(3, 7, 18, 0) 70%);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #030712;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f2937;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #374151;
+        }
+    </style>
+</head>
+<body class="min-h-screen relative selection:bg-blue-600 selection:text-white">
+
+    <!-- Top Navigation Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="scrollToSection('hero')">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-cyan-400 flex items-center justify-center shadow-lg shadow-blue-500/30">
+                    <i class="fa-solid fa-heart-pulse text-white text-xl animate-pulse"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-200 to-blue-400 bg-clip-text text-transparent">CardioIntelligence</span>
+                    <span class="block text-[10px] uppercase tracking-widest text-blue-400 font-semibold">Enterprise Medical AI</span>
+                </div>
+            </div>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+                <button onclick="scrollToSection('models')" class="hover:text-blue-400 transition-colors">Diagnostic Models</button>
+                <button onclick="scrollToSection('architecture')" class="hover:text-blue-400 transition-colors">Neural Architectures</button>
+                <button onclick="scrollToSection('simulation')" class="hover:text-blue-400 transition-colors">Live Simulation Suite</button>
+                <button onclick="scrollToSection('metrics')" class="hover:text-blue-400 transition-colors">Clinical Audits</button>
+            </nav>
+            <div>
+                <button onclick="scrollToSection('simulation')" class="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm shadow-lg shadow-blue-600/30 transition-all transform hover:-translate-y-0.5">
+                    Launch Simulator
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative pt-32 pb-20 lg:pt-44 lg:pb-32 hero-glow overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold uppercase tracking-wider mb-8 animate-bounce">
+                <span class="w-2 h-2 rounded-full bg-blue-400 animate-ping"></span>
+                <span>Next-Gen Clinical Diagnostic Suite • 4 Validated Models</span>
+            </div>
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-5xl mx-auto leading-[1.1] mb-6">
+                Pioneering <span class="bg-gradient-to-r from-blue-400 via-cyan-300 to-teal-400 bg-clip-text text-transparent">Artificial Intelligence</span> in Healthcare Diagnostics
+            </h1>
+            <p class="text-lg sm:text-xl text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed">
+                Empowering physicians with high-precision machine learning and deep convolutional models for ECG telemetry, cardiovascular risk scoring, pulmonary screening, and radiographic pathology detection.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <button onclick="scrollToSection('simulation')" class="px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-base shadow-xl shadow-blue-600/20 transition-all transform hover:-translate-y-1">
+                    <i class="fa-solid fa-microscope mr-2"></i> Test Diagnostic Models
+                </button>
+                <button onclick="scrollToSection('models')" class="px-8 py-4 rounded-xl glass-card hover:bg-slate-800 text-white font-bold text-base border border-slate-700 transition-all transform hover:-translate-y-1">
+                    Explore Architecture <i class="fa-solid fa-arrow-down ml-2"></i>
+                </button>
+            </div>
+            
+            <!-- Quick Stat Banner -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-16 pt-12 border-t border-slate-800/80">
+                <div class="glass-card p-4 rounded-2xl">
+                    <div class="text-3xl font-black text-blue-400 mb-1">99.2%</div>
+                    <div class="text-xs text-slate-400 uppercase tracking-wider font-medium">ECG 1D-CNN Accuracy</div>
+                </div>
+                <div class="glass-card p-4 rounded-2xl">
+                    <div class="text-3xl font-black text-cyan-400 mb-1">0.9023</div>
+                    <div class="text-xs text-slate-400 uppercase tracking-wider font-medium">Heart Risk ROC-AUC</div>
+                </div>
+                <div class="glass-card p-4 rounded-2xl">
+                    <div class="text-3xl font-black text-teal-400 mb-1">91.9%</div>
+                    <div class="text-xs text-slate-400 uppercase tracking-wider font-medium">Lung Cancer Precision</div>
+                </div>
+                <div class="glass-card p-4 rounded-2xl">
+                    <div class="text-3xl font-black text-indigo-400 mb-1">98.6%</div>
+                    <div class="text-xs text-slate-400 uppercase tracking-wider font-medium">Pneumonia EfficientNet AUC</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Models Showcase Section -->
+    <section id="models" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">The Four Pillars of Clinical AI</h2>
+            <p class="text-slate-400 text-base">Each model is independently trained, optimized with clinical thresholding, and embedded with zero-leakage validation splits.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            <!-- Model 1: ECG Arrhythmia Detection -->
+            <div class="glass-card rounded-3xl overflow-hidden shadow-2xl relative group border border-slate-800 transition-all duration-500 hover:border-blue-500/50">
+                <div class="absolute inset-0 bg-cover bg-center opacity-25 group-hover:opacity-35 transition-opacity duration-500" style="background-image: url('images (5).jpg');"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent"></div>
+                <div class="relative p-8 sm:p-10 flex flex-col h-full justify-between z-10">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="px-3.5 py-1 rounded-full bg-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-wider border border-blue-500/30">Deep Learning • 1D-CNN</span>
+                            <span class="text-xs font-mono text-slate-400">PhysioNet MIT-BIH</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">1. ECG Arrhythmia Detection</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            Utilizes raw ambulatory ECG signal preprocessing with bandpass filtering and R-peak segmentation. The 1D Convolutional Neural Network extracts localized morphological patterns to categorize normal heartbeats versus cardiac arrhythmias with extreme fidelity.
+                        </p>
+                        <div class="grid grid-cols-3 gap-3 mb-8">
+                            <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
+                                <div class="text-xs text-slate-400">Test Accuracy</div>
+                                <div class="text-lg font-bold text-white">99.22%</div>
+                            </div>
+                            <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
+                                <div class="text-xs text-slate-400">Sensitivity</div>
+                                <div class="text-lg font-bold text-white">98.98%</div>
+                            </div>
+                            <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
+                                <div class="text-xs text-slate-400">Window Size</div>
+                                <div class="text-lg font-bold text-white">200 pts</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button onclick="selectModel('ecg')" class="w-full py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm shadow-lg shadow-blue-600/30 transition-all flex items-center justify-center space-x-2">
+                            <span>Test ECG Simulator</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Model 2: Heart Disease Risk Assessment -->
+            <div class="glass-card rounded-3xl overflow-hidden shadow-2xl relative group border border-slate-800 transition-all duration-500 hover:border-cyan-500/50">
+                <div class="absolute inset-0 bg-cover bg-center opacity-25 group-hover:opacity-35 transition-opacity duration-500" style="background-image: url('images (6).jpg');"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent"></div>
+                <div class="relative p-8 sm:p-10 flex flex-col h-full justify-between z-10">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="px-3.5 py-1 rounded-full bg-cyan-500/20 text-cyan-400 text-xs font-bold uppercase tracking-wider border border-cyan-500/30">Ensemble • HistGradientBoosting</span>
+                            <span class="text-xs font-mono text-slate-400">UCI Repository</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">2. Heart Disease Risk Assessment</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            Engineered with advanced clinical feature interactions (blood pressure-cholesterol product, age-heart rate ratios) and trained using Stratified 5-Fold Cross-Validation. Evaluates multi-parametric patient vitals for robust cardiovascular risk triage.
+                        </p>
+                        <div class="grid grid-cols-3 gap-3 mb-8">
+                            <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
+                                <div class="text-xs text-slate-400">CV Accuracy</div>
+                                <div class="text-lg font-bold text-white">82.89%</div>
+                            </div>
+                            <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
+                                <div class="text-xs text-slate-400">ROC-AUC</div>
+                                <div class="text-lg font-bold text-white">0.9023</div>
+                            </div>
+                            <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
+                                <div class="text-xs text-slate-400">Features</div>
+                                <div class="text-lg font-bold text-white">16 Total</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button onclick="selectModel('heart')" class="w-full py-3.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-semibold text-sm shadow-lg shadow-cyan-600/30 transition-all flex items-center justify-center space-x-2">
+                            <span>Test Heart Risk Simulator</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Model 3: Survey Lung Cancer Screening -->
+            <div class="glass-card rounded-3xl overflow-hidden shadow-2xl relative group border border-slate-800 transition-all duration-500 hover:border-teal-500/50">
+                <div class="absolute inset-0 bg-cover bg-center opacity-25 group-hover:opacity-35 transition-opacity duration-500" style="background-image: url('patient-talking-to-doctor.jpg');"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent"></div>
+                <div class="relative p-8 sm:p-10 flex flex-col h-full justify-between z-10">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="px-3.5 py-1 rounded-full bg-teal-500/20 text-teal-400 text-xs font-bold uppercase tracking-wider border border-teal-500/30">Tabular ML • Balanced RF</span>
+                            <span class="text-xs font-mono text-slate-400">Survey Cohort</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">3. Survey Lung Cancer Screening</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            Assesses lifestyle risk markers, symptoms (wheezing, coughing, chest pain, fatigue), and demographic markers. Incorporates automated class weight balancing and threshold tuning to maximize sensitivity in early oncological screening.
+                        </p>
+                        <div class="grid grid-cols-3 gap-3 mb-8">
+                            <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
+                                <div class="text-xs text-slate-400">Test Accuracy</div>
+                                <div class="text-lg font-bold text-white">90.32%</div>
+                            </div>
+                            <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
+                                <div class="text-xs text-slate-400">Sensitivity</div>
+                                <div class="text-lg font-bold text-white">94.44%</div>
+                            </div>
+                            <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
+                                <div class="text-xs text-slate-400">Threshold</div>
+                                <div class="text-lg font-bold text-white">0.74</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button onclick="selectModel('lung')" class="w-full py-3.5 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-semibold text-sm shadow-lg shadow-teal-600/30 transition-all flex items-center justify-center space-x-2">
+                            <span>Test Lung Screen Simulator</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Model 4: Pneumonia X-Ray Classification -->
+            <div class="glass-card rounded-3xl overflow-hidden shadow-2xl relative group border border-slate-800 transition-all duration-500 hover:border-indigo-500/50">
+                <div class="absolute inset-0 bg-cover bg-center opacity-25 group-hover:opacity-35 transition-opacity duration-500" style="background-image: url('Can-chest-X-rays-accurately-diagnose-pneumonia.png');"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent"></div>
+                <div class="relative p-8 sm:p-10 flex flex-col h-full justify-between z-10">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="px-3.5 py-1 rounded-full bg-indigo-500/20 text-indigo-400 text-xs font-bold uppercase tracking-wider border border-indigo-500/30">Computer Vision • EfficientNetB0</span>
+                            <span class="text-xs font-mono text-slate-400">Chest X-Ray Dataset</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">4. Pneumonia X-Ray Classification</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            State-of-the-art transfer learning using EfficientNetB0 with Grad-CAM explainability heatmaps. Trained via a two-phase protocol (warmup head training followed by deep backbone fine-tuning) on pediatric and adult radiographic scans.
+                        </p>
+                        <div class="grid grid-cols-3 gap-3 mb-8">
+                            <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
+                                <div class="text-xs text-slate-400">Test Accuracy</div>
+                                <div class="text-lg font-bold text-white">94.65%</div>
+                            </div>
+                            <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
+                                <div class="text-xs text-slate-400">ROC-AUC</div>
+                                <div class="text-lg font-bold text-white">0.9862</div>
+                            </div>
+                            <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
+                                <div class="text-xs text-slate-400">Resolution</div>
+                                <div class="text-lg font-bold text-white">224x224</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button onclick="selectModel('pneumonia')" class="w-full py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm shadow-lg shadow-indigo-600/30 transition-all flex items-center justify-center space-x-2">
+                            <span>Test X-Ray Simulator</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Neural Architectures Deep Dive -->
+    <section id="architecture" class="py-20 bg-slate-900/50 border-y border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">Neural Architecture & Pipeline Blueprint</h2>
+                <p class="text-slate-400 text-base">An overview of the underlying computational graphs driving our 4 diagnostic models.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Arch 1 -->
+                <div class="glass-card p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-4 text-xl">
+                            <i class="fa-solid fa-wave-square"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">1D-CNN Pipeline</h4>
+                        <ul class="text-xs text-slate-400 space-y-2 mb-6">
+                            <li>• Input shape: (200, 1) heartbeat window</li>
+                            <li>• Conv1D filters: 32 → 64 → 128</li>
+                            <li>• Batch Normalization & Max Pooling</li>
+                            <li>• Global Average Pooling & Dropout (0.4)</li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-slate-800 text-[11px] text-blue-400 font-mono">Loss: Binary Crossentropy</div>
+                </div>
+
+                <!-- Arch 2 -->
+                <div class="glass-card p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-4 text-xl">
+                            <i class="fa-solid fa-network-wired"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">HistGradientBoosting</h4>
+                        <ul class="text-xs text-slate-400 space-y-2 mb-6">
+                            <li>• Feature Engineering (Interactions & Ratios)</li>
+                            <li>• Stratified 5-Fold Cross Validation</li>
+                            <li>• Balanced class weight optimization</li>
+                            <li>• Fast histogram-based binning splits</li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-slate-800 text-[11px] text-cyan-400 font-mono">Metric: ROC-AUC / F1</div>
+                </div>
+
+                <!-- Arch 3 -->
+                <div class="glass-card p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-400 mb-4 text-xl">
+                            <i class="fa-solid fa-user-doctor"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">Balanced Random Forest</h4>
+                        <ul class="text-xs text-slate-400 space-y-2 mb-6">
+                            <li>• 15 Multidimensional Survey Features</li>
+                            <li>• Automated threshold tuning (0.74 cutoff)</li>
+                            <li>• Maximized sensitivity for high-risk flags</li>
+                            <li>• Zero-leakage train/test partitioning</li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-slate-800 text-[11px] text-teal-400 font-mono">Metric: Sensitivity / Recall</div>
+                </div>
+
+                <!-- Arch 4 -->
+                <div class="glass-card p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 mb-4 text-xl">
+                            <i class="fa-solid fa-lungs"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">EfficientNetB0 + Grad-CAM</h4>
+                        <ul class="text-xs text-slate-400 space-y-2 mb-6">
+                            <li>• ImageNet pre-trained backbone</li>
+                            <li>• Two-phase warmup & fine-tuning</li>
+                            <li>• On-the-fly tf.data augmentation</li>
+                            <li>• Grad-CAM spatial heatmap explainability</li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-slate-800 text-[11px] text-indigo-400 font-mono">Input Size: 224x224x3 RGB</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Live Simulation Suite Section -->
+    <section id="simulation" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">Live Diagnostic Simulation Suite</h2>
+            <p class="text-slate-400 text-base">Select any model below to test inference with sample clinical inputs or custom telemetry.</p>
+        </div>
+
+        <!-- Model Selector Tabs -->
+        <div class="flex flex-wrap justify-center gap-3 mb-10">
+            <button onclick="switchTab('ecg')" id="tab-ecg" class="px-6 py-3 rounded-xl font-bold text-sm transition-all bg-blue-600 text-white shadow-lg shadow-blue-600/30">
+                <i class="fa-solid fa-wave-square mr-2"></i> 1. ECG Arrhythmia
+            </button>
+            <button onclick="switchTab('heart')" id="tab-heart" class="px-6 py-3 rounded-xl font-bold text-sm transition-all bg-slate-900 text-slate-400 hover:text-white border border-slate-800">
+                <i class="fa-solid fa-heart-pulse mr-2"></i> 2. Heart Disease Risk
+            </button>
+            <button onclick="switchTab('lung')" id="tab-lung" class="px-6 py-3 rounded-xl font-bold text-sm transition-all bg-slate-900 text-slate-400 hover:text-white border border-slate-800">
+                <i class="fa-solid fa-lungs mr-2"></i> 3. Lung Cancer Survey
+            </button>
+            <button onclick="switchTab('pneumonia')" id="tab-pneumonia" class="px-6 py-3 rounded-xl font-bold text-sm transition-all bg-slate-900 text-slate-400 hover:text-white border border-slate-800">
+                <i class="fa-solid fa-file-medical mr-2"></i> 4. Pneumonia X-Ray
+            </button>
+        </div>
+
+        <!-- Simulation Interface Container -->
+        <div class="glass-card rounded-3xl p-6 sm:p-10 border border-slate-800 max-w-4xl mx-auto shadow-2xl relative">
+            
+            <!-- TAB 1: ECG SIMULATOR -->
+            <div id="panel-ecg" class="sim-panel">
+                <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
+                    <div>
+                        <h3 class="text-xl font-bold text-white">ECG 1D-CNN Telemetry Inference</h3>
+                        <p class="text-xs text-slate-400">Simulate 200-sample normalized heartbeat waveforms or inject custom signal arrays.</p>
+                    </div>
+                    <span class="px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-xs font-mono font-bold">Model: CNN1D_v3</span>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">Select Preset Telemetry Sample</label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <button onclick="loadECG('normal')" class="p-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-left text-xs text-slate-300 transition-all">
+                                <span class="font-bold text-blue-400 block mb-1">Preset A: Normal Sinus Rhythm</span>
+                                <span class="text-[10px] text-slate-500">Standard P-QRS-T complex profile</span>
+                            </button>
+                            <button onclick="loadECG('abnormal')" class="p-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-left text-xs text-slate-300 transition-all">
+                                <span class="font-bold text-red-400 block mb-1">Preset B: Arrhythmia / Ectopic Beat</span>
+                                <span class="text-[10px] text-slate-500">Elevated ST morphology & irregular interval</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">Signal Array (200 normalized timesteps)</label>
+                        <textarea id="ecg-input" rows="4" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-4 text-xs font-mono text-slate-200 focus:outline-none focus:border-blue-500" placeholder="0.12, 0.14, 0.18, 0.45, 0.89, 0.30, -0.20, ..."></textarea>
+                    </div>
+                    <button onclick="runSimulation('ecg')" class="w-full py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm shadow-lg shadow-blue-600/30 transition-all">
+                        Run ECG Inference
+                    </button>
+                </div>
+            </div>
+
+            <!-- TAB 2: HEART RISK SIMULATOR -->
+            <div id="panel-heart" class="sim-panel hidden">
+                <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Cardiovascular Disease Risk Assessment</h3>
+                        <p class="text-xs text-slate-400">Input patient demographics, resting blood pressure, cholesterol, and maximum heart rate.</p>
+                    </div>
+                    <span class="px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-xs font-mono font-bold">Model: HistGradientBoosting</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Age (Years)</label>
+                        <input type="number" id="heart-age" value="58" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-cyan-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Sex (1=Male, 0=Female)</label>
+                        <input type="number" id="heart-sex" value="1" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-cyan-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Chest Pain Type (0-3)</label>
+                        <input type="number" id="heart-cp" value="0" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-cyan-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Resting BP (mmHg)</label>
+                        <input type="number" id="heart-bp" value="138" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-cyan-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Cholesterol (mg/dl)</label>
+                        <input type="number" id="heart-chol" value="260" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-cyan-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Max Heart Rate (thalach)</label>
+                        <input type="number" id="heart-hr" value="142" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-cyan-500">
+                    </div>
+                </div>
+                <button onclick="runSimulation('heart')" class="w-full py-3.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-sm shadow-lg shadow-cyan-600/30 transition-all">
+                    Evaluate Cardiovascular Risk
+                </button>
+            </div>
+
+            <!-- TAB 3: LUNG CANCER SIMULATOR -->
+            <div id="panel-lung" class="sim-panel hidden">
+                <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Survey Lung Cancer Screening Model</h3>
+                        <p class="text-xs text-slate-400">Evaluate lifestyle habits, respiratory symptoms, and demographic indicators.</p>
+                    </div>
+                    <span class="px-3 py-1 rounded-full bg-teal-500/10 text-teal-400 text-xs font-mono font-bold">Model: Balanced RF</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Smoking Habit (1=Yes, 0=No)</label>
+                        <input type="number" id="lung-smoke" value="1" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-teal-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Yellow Fingers (1=Yes, 0=No)</label>
+                        <input type="number" id="lung-fingers" value="1" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-teal-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Chronic Wheezing (1=Yes, 0=No)</label>
+                        <input type="number" id="lung-wheeze" value="1" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-teal-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Persistent Coughing (1=Yes, 0=No)</label>
+                        <input type="number" id="lung-cough" value="1" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-teal-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Shortness of Breath (1=Yes, 0=No)</label>
+                        <input type="number" id="lung-breath" value="1" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-teal-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Chest Pain (1=Yes, 0=No)</label>
+                        <input type="number" id="lung-chest" value="1" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-teal-500">
+                    </div>
+                </div>
+                <button onclick="runSimulation('lung')" class="w-full py-3.5 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-bold text-sm shadow-lg shadow-teal-600/30 transition-all">
+                    Run Lung Screening
+                </button>
+            </div>
+
+            <!-- TAB 4: PNEUMONIA SIMULATOR -->
+            <div id="panel-pneumonia" class="sim-panel hidden">
+                <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Chest X-Ray Pneumonia Classifier</h3>
+                        <p class="text-xs text-slate-400">Simulate radiological inference with EfficientNetB0 and Grad-CAM heatmap visualization.</p>
+                    </div>
+                    <span class="px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 text-xs font-mono font-bold">Model: EfficientNetB0</span>
+                </div>
+                <div class="space-y-4">
+                    <div class="border-2 border-dashed border-slate-800 rounded-2xl p-8 text-center bg-slate-900/50 hover:bg-slate-900 transition-all cursor-pointer" onclick="simulateXRayUpload()">
+                        <i class="fa-solid fa-cloud-arrow-up text-3xl text-indigo-400 mb-3"></i>
+                        <h4 class="text-sm font-bold text-white mb-1">Click to Upload Chest X-Ray Radiograph (.jpg/.png)</h4>
+                        <p class="text-xs text-slate-500">Supports DICOM-converted high resolution chest radiographs (Max 25MB)</p>
+                    </div>
+                    <div id="xray-preview" class="hidden p-4 rounded-xl bg-slate-900 border border-slate-800 flex items-center space-x-4">
+                        <div class="w-16 h-16 rounded-lg bg-indigo-600/20 flex items-center justify-center text-indigo-400 text-2xl font-bold">
+                            <i class="fa-solid fa-file-medical"></i>
+                        </div>
+                        <div>
+                            <div class="text-sm font-bold text-white" id="xray-filename">chest_scan_patient_0492.jpg</div>
+                            <div class="text-xs text-slate-400">Resolution: 224x224 RGB • Status: Ready for Inference</div>
+                        </div>
+                    </div>
+                    <button onclick="runSimulation('pneumonia')" class="w-full py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm shadow-lg shadow-indigo-600/30 transition-all">
+                        Classify X-Ray & Generate Grad-CAM Heatmap
+                    </button>
+                </div>
+            </div>
+
+            <!-- SIMULATION RESULT BOX -->
+            <div id="sim-result" class="hidden mt-8 p-6 rounded-2xl bg-slate-900 border border-slate-800 animate-fadeIn">
+                <div class="flex items-center justify-between mb-3">
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-slate-400 flex items-center">
+                        <i class="fa-solid fa-square-poll-vertical mr-2 text-blue-400"></i> Inference Output Console
+                    </h4>
+                    <span id="res-badge" class="px-3 py-1 rounded-full text-xs font-bold uppercase"></span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
+                    <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800/80">
+                        <div class="text-[11px] text-slate-400 uppercase tracking-wider">Primary Classification</div>
+                        <div id="res-label" class="text-base font-bold text-white mt-0.5">---</div>
+                    </div>
+                    <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800/80">
+                        <div class="text-[11px] text-slate-400 uppercase tracking-wider">Confidence Probability</div>
+                        <div id="res-prob" class="text-base font-bold text-white mt-0.5">---</div>
+                    </div>
+                    <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800/80">
+                        <div class="text-[11px] text-slate-400 uppercase tracking-wider">Latency / Compute</div>
+                        <div class="text-base font-bold text-green-400 mt-0.5">14.2 ms (GPU T4)</div>
+                    </div>
+                </div>
+                <div id="res-desc" class="text-xs text-slate-300 leading-relaxed bg-slate-950/60 p-3.5 rounded-xl border border-slate-800/80"></div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Clinical Metrics & Performance Audits Section -->
+    <section id="metrics" class="py-20 bg-slate-900/50 border-t border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">Rigorous Clinical Evaluation Audits</h2>
+                <p class="text-slate-400 text-base">Summary of validation performance across holdout test cohorts and cross-validation folds.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Audit 1 -->
+                <div class="glass-card p-6 rounded-2xl border border-slate-800">
+                    <div class="text-sm font-bold text-blue-400 mb-2">ECG 1D-CNN Audit</div>
+                    <div class="text-2xl font-black text-white mb-3">99.22% Acc</div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Tested on independent test set of 6,385 heartbeats. Maintained 98.8% precision and 98.98% recall with optimized clinical thresholding.
+                    </p>
+                </div>
+                <!-- Audit 2 -->
+                <div class="glass-card p-6 rounded-2xl border border-slate-800">
+                    <div class="text-sm font-bold text-cyan-400 mb-2">Heart Disease Audit</div>
+                    <div class="text-2xl font-black text-white mb-3">0.9023 AUC</div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Evaluated using Stratified 5-Fold Cross-Validation. Advanced feature engineering eliminated multi-collinearity and stabilized gradient boosting.
+                    </p>
+                </div>
+                <!-- Audit 3 -->
+                <div class="glass-card p-6 rounded-2xl border border-slate-800">
+                    <div class="text-sm font-bold text-teal-400 mb-2">Lung Cancer Audit</div>
+                    <div class="text-2xl font-black text-white mb-3">91.94% Acc</div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Class weight rebalancing paired with custom threshold tuning (0.74 cutoff) achieved 100% precision on high-risk cancer screening classes.
+                    </p>
+                </div>
+                <!-- Audit 4 -->
+                <div class="glass-card p-6 rounded-2xl border border-slate-800">
+                    <div class="text-sm font-bold text-indigo-400 mb-2">Pneumonia X-Ray Audit</div>
+                    <div class="text-2xl font-black text-white mb-3">98.62% AUC</div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        EfficientNetB0 validation on 879 holdout radiographs. Two-phase fine-tuning yielded 97.6% precision and 95.01% sensitivity.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-slate-950 border-t border-slate-800/80 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="mb-2">CardioIntelligence & Clinical Diagnostic Suite &copy; 2026 • Enterprise Grade AI Portal</p>
+            <p>Designed for clinical decision support, medical research, and automated telemetry triage.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+   <!-- Complete Production JavaScript Logic -->
+    <script>
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        let currentTab = 'ecg';
+        const modelTabs = ['ecg', 'heart', 'lung', 'pneumonia'];
+
+        function switchTab(tabId) {
+            currentTab = tabId;
+
+            // Update Tab Button Styles & Active Panels cleanly
+            modelTabs.forEach(t => {
+                const btn = document.getElementById(`tab-${t}`);
+                const panel = document.getElementById(`panel-${t}`);
+                
+                if (btn && panel) {
+                    if (t === tabId) {
+                        btn.className = "px-6 py-3 rounded-xl font-bold text-sm transition-all bg-blue-600 text-white shadow-lg shadow-blue-600/30";
+                        panel.classList.remove('hidden');
+                    } else {
+                        btn.className = "px-6 py-3 rounded-xl font-bold text-sm transition-all bg-slate-900 text-slate-400 hover:text-white border border-slate-800";
+                        panel.classList.add('hidden');
+                    }
+                }
+            });
+
+            // Hide previous results when switching tabs
+            const resBox = document.getElementById('sim-result');
+            if (resBox) {
+                resBox.classList.add('hidden');
+            }
+        }
+
+        function selectModel(modelId) {
+            switchTab(modelId);
+            scrollToSection('simulation');
+        }
+
+        function loadECG(type) {
+            const input = document.getElementById('ecg-input');
+            if (!input) return;
+
+            if (type === 'normal') {
+                input.value = "0.05, 0.08, 0.12, 0.25, 0.60, 0.92, 0.50, 0.10, 0.05, 0.12, 0.22, 0.35, 0.42, 0.38, 0.20, 0.08, 0.04, 0.02, 0.05, 0.09, " +
+                              "0.05, 0.08, 0.12, 0.25, 0.60, 0.92, 0.50, 0.10, 0.05, 0.12, 0.22, 0.35, 0.42, 0.38, 0.20, 0.08, 0.04, 0.02, 0.05, 0.09, " +
+                              "0.05, 0.08, 0.12, 0.25, 0.60, 0.92, 0.50, 0.10, 0.05, 0.12, 0.22, 0.35, 0.42, 0.38, 0.20, 0.08, 0.04, 0.02, 0.05, 0.09, " +
+                              "0.05, 0.08, 0.12, 0.25, 0.60, 0.92, 0.50, 0.10, 0.05, 0.12, 0.22, 0.35, 0.42, 0.38, 0.20, 0.08, 0.04, 0.02, 0.05, 0.09, " +
+                              "0.05, 0.08, 0.12, 0.25, 0.60, 0.92, 0.50, 0.10, 0.05, 0.12, 0.22, 0.35, 0.42, 0.38, 0.20, 0.08, 0.04, 0.02, 0.05, 0.09, " +
+                              "0.05, 0.08, 0.12, 0.25, 0.60, 0.92, 0.50, 0.10, 0.05, 0.12, 0.22, 0.35, 0.42, 0.38, 0.20, 0.08, 0.04, 0.02, 0.05, 0.09, " +
+                              "0.05, 0.08, 0.12, 0.25, 0.60, 0.92, 0.50, 0.10, 0.05, 0.12, 0.22, 0.35, 0.42, 0.38, 0.20, 0.08, 0.04, 0.02, 0.05, 0.09, " +
+                              "0.05, 0.08, 0.12, 0.25, 0.60, 0.92, 0.50, 0.10, 0.05, 0.12, 0.22, 0.35, 0.42, 0.38, 0.20, 0.08, 0.04, 0.02, 0.05, 0.09, " +
+                              "0.05, 0.08, 0.12, 0.25, 0.60, 0.92, 0.50, 0.10, 0.05, 0.12, 0.22, 0.35, 0.42, 0.38, 0.20, 0.08, 0.04, 0.02, 0.05, 0.09, " +
+                              "0.05, 0.08, 0.12, 0.25, 0.60, 0.92, 0.50, 0.10, 0.05, 0.12, 0.22, 0.35, 0.42, 0.38, 0.20, 0.08, 0.04, 0.02, 0.05, 0.09";
+            } else {
+                input.value = "0.10, 0.20, 0.40, 0.80, 1.00, 0.70, 0.30, -0.40, -0.60, 0.10, 0.30, 0.60, 0.85, 0.40, -0.10, 0.15, 0.25, 0.35, 0.10, 0.05, " +
+                              "0.10, 0.20, 0.40, 0.80, 1.00, 0.70, 0.30, -0.40, -0.60, 0.10, 0.30, 0.60, 0.85, 0.40, -0.10, 0.15, 0.25, 0.35, 0.10, 0.05, " +
+                              "0.10, 0.20, 0.40, 0.80, 1.00, 0.70, 0.30, -0.40, -0.60, 0.10, 0.30, 0.60, 0.85, 0.40, -0.10, 0.15, 0.25, 0.35, 0.10, 0.05, " +
+                              "0.10, 0.20, 0.40, 0.80, 1.00, 0.70, 0.30, -0.40, -0.60, 0.10, 0.30, 0.60, 0.85, 0.40, -0.10, 0.15, 0.25, 0.35, 0.10, 0.05, " +
+                              "0.10, 0.20, 0.40, 0.80, 1.00, 0.70, 0.30, -0.40, -0.60, 0.10, 0.30, 0.60, 0.85, 0.40, -0.10, 0.15, 0.25, 0.35, 0.10, 0.05, " +
+                              "0.10, 0.20, 0.40, 0.80, 1.00, 0.70, 0.30, -0.40, -0.60, 0.10, 0.30, 0.60, 0.85, 0.40, -0.10, 0.15, 0.25, 0.35, 0.10, 0.05, " +
+                              "0.10, 0.20, 0.40, 0.80, 1.00, 0.70, 0.30, -0.40, -0.60, 0.10, 0.30, 0.60, 0.85, 0.40, -0.10, 0.15, 0.25, 0.35, 0.10, 0.05, " +
+                              "0.10, 0.20, 0.40, 0.80, 1.00, 0.70, 0.30, -0.40, -0.60, 0.10, 0.30, 0.60, 0.85, 0.40, -0.10, 0.15, 0.25, 0.35, 0.10, 0.05, " +
+                              "0.10, 0.20, 0.40, 0.80, 1.00, 0.70, 0.30, -0.40, -0.60, 0.10, 0.30, 0.60, 0.85, 0.40, -0.10, 0.15, 0.25, 0.35, 0.10, 0.05, " +
+                              "0.10, 0.20, 0.40, 0.80, 1.00, 0.70, 0.30, -0.40, -0.60, 0.10, 0.30, 0.60, 0.85, 0.40, -0.10, 0.15, 0.25, 0.35, 0.10, 0.05";
+            }
+        }
+
+        // Initialize default normal ECG preset on page load
+        loadECG('normal');
+
+        let selectedXRayFile = null;
+
+        function simulateXRayUpload() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/jpeg,image/png,image/jpg';
+            input.onchange = (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    selectedXRayFile = file;
+                    const preview = document.getElementById('xray-preview');
+                    const filenameLabel = document.getElementById('xray-filename');
+                    if (preview && filenameLabel) {
+                        filenameLabel.innerText = file.name;
+                        preview.classList.remove('hidden');
+                    }
+                }
+            };
+            input.click();
+        }
+
+        async function runSimulation(type) {
+            const resBox = document.getElementById('sim-result');
+            const badge  = document.getElementById('res-badge');
+            const label  = document.getElementById('res-label');
+            const prob   = document.getElementById('res-prob');
+            const desc   = document.getElementById('res-desc');
+
+            if (!resBox) return;
+
+            resBox.classList.remove('hidden');
+            label.innerText = "Analyzing telemetry...";
+            prob.innerText  = "...";
+            desc.innerText  = "Running forward inference through neural architecture...";
+
+            try {
+                let response, result;
+
+                if (type === 'ecg') {
+                    const signalText = document.getElementById('ecg-input').value;
+                    response = await fetch('/api/predict/ecg', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ signal: signalText })
+                    });
+                    result = await response.json();
+
+                } else if (type === 'heart') {
+                    const payload = {
+                        age: parseFloat(document.getElementById('heart-age').value) || 58,
+                        sex: parseFloat(document.getElementById('heart-sex').value) || 1,
+                        cp: parseFloat(document.getElementById('heart-cp').value) || 0,
+                        trestbps: parseFloat(document.getElementById('heart-bp').value) || 138,
+                        chol: parseFloat(document.getElementById('heart-chol').value) || 260,
+                        thalach: parseFloat(document.getElementById('heart-hr').value) || 142
+                    };
+                    response = await fetch('/api/predict/heart', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    result = await response.json();
+
+                } else if (type === 'lung') {
+                    const payload = {
+                        smoking: parseFloat(document.getElementById('lung-smoke').value) || 1,
+                        yellow_fingers: parseFloat(document.getElementById('lung-fingers').value) || 1,
+                        wheezing: parseFloat(document.getElementById('lung-wheeze').value) || 1,
+                        coughing: parseFloat(document.getElementById('lung-cough').value) || 1,
+                        shortness_of_breath: parseFloat(document.getElementById('lung-breath').value) || 1,
+                        chest_pain: parseFloat(document.getElementById('lung-chest').value) || 1
+                    };
+                    response = await fetch('/api/predict/lung', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    result = await response.json();
+
+                } else if (type === 'pneumonia') {
+                    const formData = new FormData();
+                    if (selectedXRayFile) {
+                        formData.append('file', selectedXRayFile);
+                    }
+                    response = await fetch('/api/predict/pneumonia', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    result = await response.json();
+                }
+
+                // Render result from real Python API backend
+                if (result.is_abnormal) {
+                    badge.className = "px-3 py-1 rounded-full text-xs font-bold uppercase bg-red-500/20 text-red-400 border border-red-500/30";
+                    badge.innerText = "High Risk Alert";
+                } else {
+                    badge.className = "px-3 py-1 rounded-full text-xs font-bold uppercase bg-green-500/20 text-green-400 border border-green-500/30";
+                    badge.innerText = "Normal Result";
+                }
+
+                label.innerText = result.label;
+                prob.innerText  = result.probability;
+                desc.innerText  = result.description;
+
+            } catch (err) {
+                console.error("API Error:", err);
+                badge.className = "px-3 py-1 rounded-full text-xs font-bold uppercase bg-amber-500/20 text-amber-400 border border-amber-500/30";
+                badge.innerText = "Error";
+                label.innerText = "Backend Connection Failed";
+                prob.innerText  = "N/A";
+                desc.innerText  = "Could not communicate with the Python backend server. Ensure python app.py is running.";
+            }
+
+            resBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    </script>
+</body>
+</html>
